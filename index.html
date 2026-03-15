@@ -3,38 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <title>🔮 Oráculo da Pombagira</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/pombagiras/melusine/main/Al%C3%AA%20(3)%20(3)%20(1).png">
     <meta name="theme-color" content="#0a0004">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+
     <style>
-        body { background: #0a0004; color: #ff0a5b; font-family: "Cinzel", serif; text-align: center; padding: 40px 10px; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-        h1 { font-size: 34px; text-shadow: 0 0 15px #ff0a5b; animation: pulsar 2.5s infinite alternate; margin-bottom: 50px; }
-        @keyframes pulsar { from { text-shadow: 0 0 10px #ff0a5b; } to { text-shadow: 0 0 25px #ff3f7b; } }
-        #mensagem { min-height: 180px; width: 90%; max-width: 600px; font-size: 26px; color: #ff95b9; opacity: 1; transition: opacity 0.5s; display: flex; align-items: center; justify-content: center; font-style: italic; text-shadow: 2px 2px 4px #000; line-height: 1.4; }
-        button { background: #ff0a5b; color: white; border: none; padding: 18px 45px; margin-top: 40px; font-size: 18px; cursor: pointer; border-radius: 50px; box-shadow: 0 0 15px #ff0a5b; transition: 0.3s; text-transform: uppercase; font-weight: bold; letter-spacing: 2px; }
-        button:hover { background: #ff3f7b; box-shadow: 0 0 25px #ff3f7b; transform: scale(1.05); }
-        .emoji { position: fixed; top: -50px; font-size: 26px; animation: cair linear forwards; pointer-events: none; z-index: -1; }
-        @keyframes cair { to { transform: translateY(110vh); opacity: 0; } }
+        :root {
+            --cor-sangue: #ff0a5b;
+            --cor-rosa-claro: #ff95b9;
+            --fundo-abismo: #050002;
+        }
+
+        /* Removendo o scroll elástico para o pull-to-refresh não bugar no mobile */
+        html, body { 
+            overscroll-behavior-y: contain; 
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: radial-gradient(circle, #0f0006 0%, #050002 100%);
+            color: var(--cor-sangue);
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            box-shadow: inset 0 0 150px rgba(0,0,0,1);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            text-shadow: 0 0 15px var(--cor-sangue);
+            animation: pulsar 3s infinite alternate;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            z-index: 2;
+        }
+
+        @keyframes pulsar {
+            from { opacity: 0.7; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .moldura {
+            position: relative;
+            width: 85%;
+            max-width: 500px;
+            min-height: 250px;
+            padding: 30px;
+            border: 1px solid rgba(255, 10, 91, 0.15);
+            background: rgba(10, 0, 4, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            border-radius: 4px;
+        }
+
+        #mensagem {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.3rem;
+            color: var(--cor-rosa-claro);
+            line-height: 1.5;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2rem;
+            background: var(--cor-sangue);
+            margin-left: 4px;
+            animation: pisca 0.8s infinite;
+        }
+
+        @keyframes pisca { 50% { opacity: 0; } }
+
+        button {
+            background: transparent;
+            color: var(--cor-sangue);
+            border: 1px solid var(--cor-sangue);
+            padding: 15px 35px;
+            margin-top: 40px;
+            font-size: 14px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            z-index: 2;
+            transition: all 0.3s;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button:active {
+            transform: scale(0.95);
+            background: var(--cor-sangue);
+            color: #fff;
+        }
+
+        .emoji {
+            position: fixed;
+            top: -50px;
+            font-size: 20px;
+            animation: cair linear forwards;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        @keyframes cair { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <h1>🔮 Oráculo da Pombagira</h1>
-    <div id="mensagem">Aguardando o seu toque...</div>
-    <button onclick="consultarOraculo()">Ouvir o Sussurro</button>
+    <h1>ORÁCULO</h1>
+    
+    <div class="moldura">
+        <div id="mensagem">Toque para iniciar a consulta...</div>
+    </div>
+
+    <button id="btnConsultar" onclick="consultarOraculo()">Ouvir Sussurro</button>
 
 <script>
     const SUPABASE_URL = 'https://rbygxkbewzknvjjhxdvw.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJieWd4a2Jld3prbnZqamh4ZHZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYwMDcxNjQsImV4cCI6MjA4MTU4MzE2NH0.YrHF9HEGo6yv9MyNsPzFgBhaAB1DRh2SLU8f7L6s1nY';
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+    let isTyping = false;
+
+    // Função de Vibração (Haptic Feedback)
+    function vibrar(ms = 20) {
+        if ("vibrate" in navigator) {
+            navigator.vibrate(ms);
+        }
+    }
+
     async function consultarOraculo() {
+        if (isTyping) return;
+        
+        vibrar(40); // Vibração ao clicar no botão
         const div = document.getElementById("mensagem");
-        div.style.opacity = 0;
+        div.innerHTML = "...";
 
         try {
-            // Buscando na tabela que você acabou de criar
             const { data, error } = await supabaseClient
                 .from('oraculo_mensagens')
                 .select('frase');
@@ -43,29 +171,57 @@
 
             if (data && data.length > 0) {
                 const sorteio = data[Math.floor(Math.random() * data.length)];
-                setTimeout(() => {
-                    div.innerHTML = `"${sorteio.frase}"`;
-                    div.style.opacity = 1;
-                }, 500);
+                typeWriter(sorteio.frase);
             }
         } catch (err) {
-            div.innerHTML = "O portal está instável. Tente novamente.";
-            div.style.opacity = 1;
+            div.innerHTML = "O portal oscilou. Tente novamente.";
         }
     }
 
-    const chuvaEmojis = ["🕯️","🔥","🌹","💀","💋","👠","🔱","🍷"];
-    function criarEmoji() {
+    function typeWriter(texto) {
+        isTyping = true;
+        let i = 0;
+        const div = document.getElementById("mensagem");
+        
+        function escrever() {
+            if (i < texto.length) {
+                div.innerHTML = texto.substring(0, i + 1) + '<span class="cursor"></span>';
+                i++;
+                
+                // Pequena vibração a cada letra (opcional, mas visceral)
+                // if (i % 5 === 0) vibrar(5); 
+
+                setTimeout(escrever, 45);
+            } else {
+                div.innerHTML = texto + '<span class="cursor"></span>';
+                isTyping = false;
+                vibrar([30, 50, 30]); // Vibração de "finalização" (batida dupla)
+            }
+        }
+        escrever();
+    }
+
+    // Lógica de Pull-to-Refresh simples para Mobile
+    let touchStart = 0;
+    window.addEventListener('touchstart', e => { touchStart = e.touches[0].pageY; }, {passive: true});
+    window.addEventListener('touchend', e => {
+        const touchEnd = e.changedTouches[0].pageY;
+        if (touchEnd - touchStart > 150) { // Puxou para baixo mais de 150px
+            consultarOraculo();
+        }
+    }, {passive: true});
+
+    // Chuva de símbolos
+    setInterval(() => {
         const e = document.createElement("div");
         e.classList.add("emoji");
-        e.innerText = chuvaEmojis[Math.floor(Math.random() * chuvaEmojis.length)];
+        e.innerText = ["🕯️","🔥","🌹","💀","💋","👠","🔱","🍷"][Math.floor(Math.random() * 8)];
         e.style.left = Math.random() * 100 + "vw";
-        const duracao = Math.random() * 5 + 4;
+        const duracao = Math.random() * 5 + 5;
         e.style.animationDuration = duracao + "s";
         document.body.appendChild(e);
         setTimeout(() => e.remove(), duracao * 1000);
-    }
-    setInterval(criarEmoji, 500);
+    }, 1000);
 </script>
 </body>
 </html>
