@@ -2,171 +2,59 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
- <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/pombagiras/melusine/main/Al%C3%AA%20(3)%20(3)%20(1).png">
-
-<meta name="theme-color" content="#030303">
-    <title>Oráculo da Pombagira — Portal de Sangue</title>
+    <title>🔮 Oráculo da Pombagira</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/pombagiras/melusine/main/Al%C3%AA%20(3)%20(3)%20(1).png">
     <meta name="theme-color" content="#0a0004">
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <style>
-        body {
-            background: #0a0004;
-            color: #ff0a5b;
-            font-family: "Cinzel", serif;
-            text-align: center;
-            padding: 40px 10px;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        h1 {
-            font-size: 34px;
-            text-shadow: 0 0 15px #ff0a5b;
-            animation: pulsar 2.5s infinite alternate;
-        }
-
-        @keyframes pulsar {
-            from { text-shadow: 0 0 10px #ff0a5b; }
-            to { text-shadow: 0 0 25px #ff3f7b; }
-        }
-
-        #mensagem {
-            min-height: 150px;
-            margin-top: 30px;
-            font-size: 24px;
-            color: #ff95b9;
-            opacity: 0;
-            transition: opacity 0.6s ease-in-out;
-            padding: 20px;
-            font-style: italic;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-shadow: 1px 1px 2px #000;
-        }
-
-        button {
-            background: #ff0a5b;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            margin: 10px;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 50px;
-            box-shadow: 0 0 12px #ff0a5b;
-            transition: 0.3s;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background: #ff3f7b;
-            box-shadow: 0 0 20px #ff3f7b;
-            transform: scale(1.05);
-        }
-
-        #senhaContainer {
-            display: none;
-            margin-top: 30px;
-            background: rgba(20, 0, 12, 0.95);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid #ff0a5b;
-        }
-
-        #senhaInput {
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid #b00028;
-            padding: 10px;
-            width: 250px;
-            font-size: 22px;
-            color: #ff003c;
-            text-align: center;
-            outline: none;
-            font-family: "Cinzel", serif;
-        }
-
-        /* CHUVA DE EMOJIS */
-        .emoji {
-            position: fixed;
-            top: -50px;
-            font-size: 26px;
-            animation: cair linear forwards;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        @keyframes cair {
-            to { transform: translateY(110vh); opacity: 0; }
-        }
-
-        .loading { font-size: 14px; color: #666; }
+        body { background: #0a0004; color: #ff0a5b; font-family: "Cinzel", serif; text-align: center; padding: 40px 10px; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        h1 { font-size: 34px; text-shadow: 0 0 15px #ff0a5b; animation: pulsar 2.5s infinite alternate; margin-bottom: 50px; }
+        @keyframes pulsar { from { text-shadow: 0 0 10px #ff0a5b; } to { text-shadow: 0 0 25px #ff3f7b; } }
+        #mensagem { min-height: 180px; width: 90%; max-width: 600px; font-size: 26px; color: #ff95b9; opacity: 1; transition: opacity 0.5s; display: flex; align-items: center; justify-content: center; font-style: italic; text-shadow: 2px 2px 4px #000; line-height: 1.4; }
+        button { background: #ff0a5b; color: white; border: none; padding: 18px 45px; margin-top: 40px; font-size: 18px; cursor: pointer; border-radius: 50px; box-shadow: 0 0 15px #ff0a5b; transition: 0.3s; text-transform: uppercase; font-weight: bold; letter-spacing: 2px; }
+        button:hover { background: #ff3f7b; box-shadow: 0 0 25px #ff3f7b; transform: scale(1.05); }
+        .emoji { position: fixed; top: -50px; font-size: 26px; animation: cair linear forwards; pointer-events: none; z-index: -1; }
+        @keyframes cair { to { transform: translateY(110vh); opacity: 0; } }
     </style>
 </head>
 <body>
 
     <h1>🔮 Oráculo da Pombagira</h1>
-
-    <div id="mensagem">Aguardando o toque do seu axé...</div>
-
-    <div id="controles">
-        <button onclick="consultarOraculo()">Consultar Oráculo</button>
-    </div>
-
-    <p style="margin-top: 50px; font-size: 12px; opacity: 0.5;">Sussurros do Abismo — 2026</p>
+    <div id="mensagem">Aguardando o seu toque...</div>
+    <button onclick="consultarOraculo()">Ouvir o Sussurro</button>
 
 <script>
-    // CONFIGURAÇÃO DO SEU SUPABASE
     const SUPABASE_URL = 'https://rbygxkbewzknvjjhxdvw.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJieWd4a2Jld3prbnZqamh4ZHZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYwMDcxNjQsImV4cCI6MjA4MTU4MzE2NH0.YrHF9HEGo6yv9MyNsPzFgBhaAB1DRh2SLU8f7L6s1nY';
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    // FUNÇÃO PARA BUSCAR FRASES DO BANCO DE DADOS
     async function consultarOraculo() {
-        const divMensagem = document.getElementById("mensagem");
-        
-        // Efeito de saída
-        divMensagem.style.opacity = 0;
+        const div = document.getElementById("mensagem");
+        div.style.opacity = 0;
 
         try {
-            // Buscamos as frases da sua tabela. 
-            // Se você quiser usar a tabela de prompts, mude o nome abaixo:
-            const { data, error } = await supabase
-                .from('grimorio_prompts') // Nome da sua tabela no Supabase
-                .select('prompt_text');   // Nome da coluna onde ficam os textos
+            // Buscando na tabela que você acabou de criar
+            const { data, error } = await supabaseClient
+                .from('oraculo_mensagens')
+                .select('frase');
 
             if (error) throw error;
 
             if (data && data.length > 0) {
-                // Escolhe uma frase aleatória entre as centenas que você tiver lá
                 const sorteio = data[Math.floor(Math.random() * data.length)];
-                
                 setTimeout(() => {
-                    divMensagem.innerHTML = `"${sorteio.prompt_text}"`;
-                    divMensagem.style.opacity = 1;
-                }, 400);
-            } else {
-                divMensagem.innerHTML = "O abismo está em silêncio... (Nenhuma frase encontrada)";
-                divMensagem.style.opacity = 1;
+                    div.innerHTML = `"${sorteio.frase}"`;
+                    div.style.opacity = 1;
+                }, 500);
             }
-
         } catch (err) {
-            console.error("Erro ao acessar Oregon:", err);
-            divMensagem.innerHTML = "Erro ao invocar o Oráculo. Verifique a conexão.";
-            divMensagem.style.opacity = 1;
+            div.innerHTML = "O portal está instável. Tente novamente.";
+            div.style.opacity = 1;
         }
     }
 
-    /* CHUVA DE EMOJIS (Seu toque visual) */
     const chuvaEmojis = ["🕯️","🔥","🌹","💀","💋","👠","🔱","🍷"];
-
     function criarEmoji() {
         const e = document.createElement("div");
         e.classList.add("emoji");
@@ -177,9 +65,7 @@
         document.body.appendChild(e);
         setTimeout(() => e.remove(), duracao * 1000);
     }
-
     setInterval(criarEmoji, 500);
 </script>
-
 </body>
 </html>
