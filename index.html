@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Oráculo da Pombagira — Portal de Sangue</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+ body {
+     background: #0a0004;
+     color: #ff0a5b;
+     font-family: "Cinzel", serif;
+     text-align: center;
+     padding: 40px 10px;
+     overflow-x: hidden;
+ }
+
+ h1 {
+     font-size: 34px;
+     text-shadow: 0 0 15px #ff0a5b;
+     animation: pulsar 2.5s infinite alternate;
+ }
+
+ @keyframes pulsar {
+     from { text-shadow: 0 0 10px #ff0a5b; }
+     to { text-shadow: 0 0 25px #ff3f7b; }
+ }
+
+ #mensagem {
+     min-height: 120px;
+     margin-top: 30px;
+     font-size: 22px;
+     color: #ff95b9;
+     opacity: 0;
+     transition: opacity 0.4s;
+     padding: 0 10px;
+ }
+
+ button {
+     background: #ff0a5b;
+     color: white;
+     border: none;
+     padding: 12px 30px;
+     margin: 10px;
+     font-size: 18px;
+     cursor: pointer;
+     border-radius: 8px;
+     box-shadow: 0 0 12px #ff0a5b;
+     transition: 0.3s;
+ }
+
+ button:hover {
+     background: #ff3f7b;
+     box-shadow: 0 0 20px #ff3f7b;
+ }
+
+ /* Painel */
+ #painel {
+     margin-top: 30px;
+     display: none;
+     background: rgba(20, 0, 12, 0.9);
+     padding: 20px;
+     border-radius: 10px;
+     border: 1px solid #ff0a5b;
+ }
+
+ textarea {
+     width: 95%;
+     height: 200px;
+     background: #1a0010;
+     color: #ff95b9;
+     border: 1px solid #ff0a5b;
+     padding: 10px;
+     font-size: 16px;
+ }
+
+ /* TELA DE SENHA */
+ #senhaContainer {
+     display: none;
+     margin-top: 30px;
+ }
+
+ #senhaInput {
+     background: transparent;
+     border: none;
+     border-bottom: 2px solid #b00028;
+     padding: 10px;
+     width: 250px;
+     font-size: 22px;
+     color: #ff003c;
+     text-align: center;
+     outline: none;
+     animation: brilho 2s infinite alternate;
+     font-family: "Cinzel", serif;
+ }
+
+ @keyframes brilho {
+     from { text-shadow: 0 0 5px #ff003c; }
+     to { text-shadow: 0 0 15px #ff4b6b; }
+ }
+
+ #senhaInput::placeholder {
+     color: #6d0017;
+ }
+
+ #senhaInput.blood {
+     text-shadow: 0 0 8px #8c001f;
+     color: #ff003c;
+ }
+
+ /* CHUVA DE EMOJIS */
+ .emoji {
+     position: fixed;
+     top: -50px;
+     font-size: 26px;
+     animation: cair linear forwards;
+     pointer-events: none;
+     z-index: -1;
+ }
+
+ @keyframes cair {
+     to {
+         transform: translateY(120vh);
+         opacity: 0;
+     }
+ }
+
+ @media (max-width: 600px) {
+     .emoji {
+         font-size: 20px;
+     }
+ }
+</style>
+</head>
+<body>
+
+<h1>🔮 Oráculo da Pombagira</h1>
+
+<div id="mensagem"></div>
+
+<button onclick="consultar()">Consultar</button>
+<button onclick="abrirSenha()">Editar Mensagens</button>
+
+<!-- Tela de senha -->
+<div id="senhaContainer">
+    <h2>🩸 Portal de Sangue — Digite a Senha</h2>
+    <input type="password" id="senhaInput" placeholder="sangue..." oninput="efeitoSangue()">
+    <br><br>
+    <button onclick="verificarSenha()">Entrar</button>
+</div>
+
+<!-- Painel -->
+<div id="painel">
+    <h2>✍️ Editar Mensagens</h2>
+    <p>Escreva <b>uma mensagem por linha</b>:</p>
+    <textarea id="editor"></textarea><br>
+    <button onclick="salvar()">Salvar Mensagens</button>
+</div>
+
+
+<script>
+// Senha fixa
+const senhaCorreta = "pombagira";
+
+// Efeito sangue escrevendo
+function efeitoSangue() {
+    document.getElementById("senhaInput").classList.add("blood");
+}
+
+// Abrir tela de senha
+function abrirSenha() {
+    document.getElementById("senhaContainer").style.display = "block";
+}
+
+// Verificar senha
+function verificarSenha() {
+    const tentativa = document.getElementById("senhaInput").value;
+    if (tentativa === senhaCorreta) {
+        document.getElementById("senhaContainer").style.display = "none";
+        document.getElementById("painel").style.display = "block";
+        document.getElementById("editor").value = mensagens.join("\n");
+    } else {
+        alert("🩸 Senha incorreta. O portal permanece fechado.");
+    }
+}
+
+// Carregar mensagens
+let mensagens = JSON.parse(localStorage.getItem("mensagensPomba")) || [
+    "🔥 Você carrega chamas que nenhum mundo consegue apagar.",
+    "💋 Caminhe com firmeza: Pombagira abre caminhos para quem ousa.",
+    "🌙 Sua identidade é feitiço, revolução e renascimento.",
+    "🖤 Da dor você fez poder. Do silêncio, tempestade.",
+    "❤️‍🔥 A Pombagira sussurra: ninguém apaga o que você nasceu pra ser.",
+    "🌹 Trans é magia. Pombagira é caminho. Você é os dois."
+];
+
+// Consultar
+function consultar() {
+    const div = document.getElementById("mensagem");
+    const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+    div.style.opacity = 0;
+    setTimeout(() => {
+        div.innerHTML = msg;
+        div.style.opacity = 1;
+    }, 200);
+}
+
+// Salvar
+function salvar() {
+    const texto = document.getElementById("editor").value;
+    mensagens = texto.split("\n").map(m => m.trim()).filter(m => m.length > 0);
+    localStorage.setItem("mensagensPomba", JSON.stringify(mensagens));
+    alert("Mensagens salvas com sucesso! 🔥");
+}
+
+/* CHUVA DE EMOJIS */
+const chuvaEmojis = [
+    "🕯️","🔥","🌹","⚰️","💋","💄","🌈",
+    "👠","💃","⚧️","🏳️‍⚧️","🏳️‍🌈","🔱"
+];
+
+function criarEmoji() {
+    const e = document.createElement("div");
+    e.classList.add("emoji");
+    e.innerText = chuvaEmojis[Math.floor(Math.random() * chuvaEmojis.length)];
+    e.style.left = Math.random() * 100 + "vw";
+
+    const duracao = Math.random() * 5 + 4;
+    e.style.animationDuration = duracao + "s";
+
+    document.body.appendChild(e);
+
+    setTimeout(() => e.remove(), duracao * 1000);
+}
+
+setInterval(criarEmoji, 400);
+</script>
+
+</body>
+</html>
