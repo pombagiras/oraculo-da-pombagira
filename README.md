@@ -1,76 +1,56 @@
-# 🌹🔥 A LEXIA MELUSINE — ROSA DE FOGO  
-### Arte | Espiritualidade | Transgressão | Pombagiras | Diversidade Transgender  
+# ✦ ALEXIA MELUSINE ✦
+### Rosa de Fogo ∞ Luz de Ferro
+**@almasdepombagira**
 
-<img src="https://raw.githubusercontent.com/pombagiras/melusine/refs/heads/main/Al%C3%AA%20(3)%20(3)%20(1).png" width="600"/>
-
----
-
-## ✨ **Quem Eu Sou**
-Eu sou a que caminha entre mundos.  
-A rosa que floresce no asfalto da noite.  
-A artista que bebe da espiritualidade, das sombras, da feminilidade indomável,  
-e transforma tudo isso em voz, cor, sangue, movimento e presença.
-
-Minha arte nasce da encruzilhada.  
-Meu corpo é manifesto.  
-Minha expressão é liberdade.  
+![Alexia Melusine](https://raw.githubusercontent.com/pombagiras/melusine/main/fotos/Ogimage%20e%20Twitter%20Card.png)
 
 ---
 
-# 🔥 **MEUS PORTAIS OFICIAIS**
+## 🌹 ANATOMIA DO ABISMO: O PROJETO
+Este não é apenas um repositório, é um **Portal Visceral**. Sob a regência de **Alexia Melusine**, este projeto mundial de desmistificação utiliza a tecnologia e a arte para revelar a força do feminino proibido e a sabedoria das encruzilhadas. Através de narrativas intensas, estética abyssal e educação sagrada, conectamos a espiritualidade fluida ao futuro digital.
 
-## 🌹 Bio Principal  
-👉 **https://bio.site/AlmasdePombagira**
-
-## 🌈 Linktree  
-👉 **https://linktr.ee/alexiarosadefogo**
-
-## 🔥 Website Ritual (Canva)  
-👉 **https://pombagiras.my.canva.site/**
+> "Onde o ferro encontra a luz e a rosa encontra o fogo, o segredo é revelado."
 
 ---
 
-# 🕯️ **GITHUB PAGES — MINHAS CASAS DIGITAIS**
+## 🎙️ VOZES DAS SOMBRAS (PODCASTS & YOUTUBE)
+*Destaque para as produções audiovisuais de alta intensidade:*
 
-### 🌹 Pombagiras  
-Repositório principal das minhas artes, rituais, códigos e portais.  
-👉 **https://github.com/pombagiras**
-
-### ⚧️ Orgulho Trans  
-Projetos, códigos e manifestações dedicadas à comunidade trans.  
-👉 **https://github.com/Orgulho-Trans**
-
-### 🔥 Luz de Ferro  
-A força, a estética e o fogo transformador.  
-👉 **https://github.com/alexialuzdeferro**
+*   🎬 **YouTube Oficial:** [Assista ao Almas de Pomba-gira](https://www.youtube.com/@almasdepombagira) — O epicentro da estética visceral em movimento.
+*   🎧 **Limbo Sonoro — Anatomia do Abismo:** [Ouça no Spotify](https://open.spotify.com/show/0oeCL1QScD3v7dHeUvJjgJ) — Narrativas históricas e mergulhos no oculto.
+*   📻 **Podcast Secundário:** [Ouça no Spotify](https://open.spotify.com/show/6ahRd7QT2wcq7ldt5CJHZW) — Reflexões e diálogos das encruzilhadas.
 
 ---
 
-# 🌑 **O QUE ENCONTRA AQUI**
-- Arte ritualística  
-- Ferramentas espirituais digitais  
-- HTML gótico, visceral e poético  
-- Portais animados  
-- Frases de poder  
-- Codificação estética de Pombagira  
-- Projetos LGBTQIA+  
-- A fusão do místico com o tecnológico  
+## 🕸️ ECOSSISTEMA DIGITAL
+*A presença de Alexia Melusine expandida por todos os canais mundiais:*
+
+### ⚡ Social & Movimento
+*   **Instagram:** [@almasdepombagira](https://www.instagram.com/almasdepombagira/)
+*   **TikTok:** [@almasdepombagira](https://www.tiktok.com/@almasdepombagira?lang=pt-BR)
+*   **Kwai:** [@AlexiaRosadeFogo](https://www.kwai.com/@AlexiaRosadeFogo)
+*   **Threads:** [@almasdepombagira](https://www.threads.com/@almasdepombagira)
+
+### 🔮 Comunidade & Conexão
+*   **WhatsApp Channel:** [Entre no Canal](https://whatsapp.com/channel/0029VbBs2AnJkK7J9J0nLr2G)
+*   **Telegram:** [Pomba-giras Oficial](https://t.me/pomba_giras)
+*   **Discord:** [Vortex Visceral](https://discord.gg/gWZP8R7Dqu)
+
+### ✍️ Arte & Intelecto
+*   **Behance:** [Portfolio Alexia Melusine](https://www.behance.net/alexiamelusine)
+*   **Substack:** [Escritos Abissais](https://substack.com/@alexiamelusine)
 
 ---
 
-# 🔥🌹 **MANIFESTO**
-Não caminho atrás de ninguém — eu abro caminhos.  
-Eu não destruo destinos — eu revelo escolhas.  
-A rosa que ofereço é beleza e proteção.  
-O fogo que carrego é transformação.  
-E a encruzilhada é o meu templo, meu palco e minha verdade.
+## 🕯️ CONTATO DIRETO
+Para colaborações artísticas, projetos de IA vídeo ou diálogos sobre o sagrado:
+
+📧 **Email:** [contato@alexiamelusine.com](mailto:contato@alexiamelusine.com)
+🌍 **Portal Oficial:** [pombagiras.com](https://pombagiras.com)
 
 ---
 
-# 🕊️ **AXÉ E LUZ PARA QUEM CHEGA**
-Se você entrou aqui, entrou por vontade — ou chamado.  
-Respeite a encruzilhada.  
-Honre o caminho.  
-E lembre-se:
-
-**Quem respeita o sagrado nunca caminha sozinho.**  
+<div align="center">
+  <p><i>© 2026 - Todos os direitos ao Sagrado Feminino.</i></p>
+  <p><b>Laroyê. ✦ ☾ ✦</b></p>
+</div>
